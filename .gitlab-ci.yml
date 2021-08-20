@@ -1,0 +1,13 @@
+image: node
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+
+deploy:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - mv server/* ./
+    - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY --skip-cleanup

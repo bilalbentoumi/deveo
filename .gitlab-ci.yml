@@ -1,13 +1,27 @@
-image: node
+image: node:latest
 
-before_script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
-  - gem install dpl
+build:
+  stage: build
+  image: node:latest
+  script:
+    - npm ci --prefix=./client
+    - npm run build --prefix=./client
+    - mv client/dist server/www
+  artifacts:
+    paths:
+      - server
 
 deploy:
   stage: deploy
   image: ruby:latest
   script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
     - mv server/* ./
+    - rm -r client
+    - rm -r server
     - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY --skip-cleanup
+  artifacts:
+    paths:
+      - server

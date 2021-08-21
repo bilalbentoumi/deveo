@@ -173,6 +173,9 @@ export default {
                 { name: 'Calendar', href: '#', current: false },
             ]
         }
+    },
+    mounted() {
+        document.title = 'Deveo - Login'
     }
 }
 </script>

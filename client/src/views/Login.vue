@@ -1,4 +1,5 @@
 <template>
+
     <Disclosure as="nav" class="bg-gray-800 fixed left-0 right-0" v-slot="{ open }">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
@@ -12,8 +13,8 @@
                 </div>
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex-shrink-0 flex items-center">
-                        <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
-                        <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow" />
+                        <img class="block lg:hidden h-6 w-auto" src="@/assets/logo.svg" alt="Deveo" />
+                        <img class="hidden lg:block h-8 w-auto" src="@/assets/logo-text.svg" alt="Deveo" />
                     </div>
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
@@ -60,34 +61,83 @@
         </DisclosurePanel>
     </Disclosure>
 
-    <div class="bg-gray-100 h-full">
+    <div class="bg-gray-50 h-full">
 
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-48">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-20 md:pt-48">
 
-            <div class="grid grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-                <h2 class="text-6xl font-bold">Social Network<br>for Programmers and Developers</h2>
+                <div class="hidden md:block pt-16">
+                    <h2 class="text-6xl font-bold mb-6">Social Network<br>for Programmers and Developers</h2>
+                    <p class="text-gray-700 text-3xl">Connect with friends and the world around you on Deveo.</p>
+                </div>
 
-                <form class="bg-white shadow-md rounded-md p-10">
+                <div class="col pl-0 lg:pl-40">
 
-                    <div class="flex flex-col items-center mb-16">
-                        <img class="mx-auto h-16 w-auto mb-6" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
-                        <h2 class="font-medium text-4xl text-gray-600">Sign in to your account</h2>
+                    <div class="bg-white shadow w-full rounded-lg p-10">
+
+                        <h2 class="text-3xl font-medium text-gray-800">Sign in</h2>
+                        <p class="text-lg font-regular text-gray-500 mb-6">Sign in to your account</p>
+
+                        <div class="mb-6">
+                            <label class="font-regular text-sm text-gray-600 pb-1 block">E-mail address</label>
+                            <div class="relative">
+                                <i class="far fa-user w-12 h-full absolute flex justify-center items-center text-gray-400"></i>
+                                <input type="text" class="border rounded-md shadow-sm focus:shadow-md px-3 py-3 pl-10 text-sm w-full"/>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="font-regular text-sm text-gray-600 pb-1 block">Password</label>
+                            <div class="relative">
+                                <i class="far fa-lock w-12 h-full absolute flex justify-center items-center text-gray-400"></i>
+                                <input type="password" class="border rounded-md shadow-sm focus:shadow-md px-3 py-3 pl-10 text-sm w-full"/>
+                            </div>
+                        </div>
+
+                        <button type="button" class="mt-2 transition duration-75 bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-700 focus:shadow-sm text-white w-full py-3 rounded-md text-sm shadow-sm hover:shadow-md font-semibold text-center">
+                            <span class="inline-block mr-2">Login</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 inline-block">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </button>
+
+                        <div class="relative py-8">
+                            <div class="w-full h-px bg-gray-200"></div>
+                            <span class="bg-white text-sm text-gray-400 px-4 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">Or continue with</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-1">
+                            <button type="button" class="transition duration-200 border border-gray-200 text-gray-500 hover:text-indigo-500 text-xl w-full py-1 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block">
+                                <i class="fab fa-facebook"></i>
+                            </button>
+                            <button type="button" class="transition duration-200 border border-gray-200 text-gray-500 hover:text-indigo-500 text-xl w-full py-1 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block">
+                                <i class="fab fa-twitter"></i>
+
+                            </button>
+                            <button type="button" class="transition duration-200 border border-gray-200 text-gray-500 hover:text-indigo-500 text-xl w-full py-1 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-1 mt-6">
+                            <button class="transition duration-200 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 inline-block align-text-top">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                </svg>
+                                <span class="inline-block ml-1">Forgot Password</span>
+                            </button>
+                            <button class="transition duration-200 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 inline-block align-text-bottom	">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                                <span class="inline-block ml-1">Help</span>
+                            </button>
+                        </div>
+
                     </div>
 
-                    <div class="mb-10 flex flex-col">
-                        <label class="text-gray-700 font-medium text-lg mb-1">Email</label>
-                        <input type="text" class="w-full border py-4 px-6 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded-lg focus:rounded-lg shadow-sm" placeholder="john@email.com"/>
-                    </div>
-
-                    <div class="mb-10 flex flex-col">
-                        <label class="text-gray-700 font-medium text-lg mb-1">Password</label>
-                        <input type="password" class="w-full border py-4 px-6 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded-lg focus:rounded-lg shadow-sm" placeholder="********"/>
-                    </div>
-
-                    <button type="submit" class="w-full text-indigo-50 font-bold bg-indigo-600 py-5 rounded-lg hover:bg-indigo-500 transition duration-300 shadow-sm disabled:opacity-50">LOGIN</button>
-
-                </form>
+                </div>
 
             </div>
 

@@ -10,6 +10,14 @@ app.get('/api', (req, res) => {
     res.send('Hello from api!')
 })
 
+app.get('/*', (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, 'www', 'index.html'))
+    } catch (err) {
+        res.json({ success: false, message: 'Something went wrong' })
+    }
+})
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })

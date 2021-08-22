@@ -4,6 +4,17 @@ const User = require('../models/user')
 
 module.exports = {
 
+    verify(req, res) {
+
+        jwt.verify(req.body.token, process.env.JWT_SECRET_KEY, (err, user) => {
+            if (err) {
+                res.status(403).json({ valid: false })
+            }
+            res.status(200).json({ valid: true })
+        })
+
+    },
+
     login(req, res) {
 
         if (!req.body.email || !req.body.password) {

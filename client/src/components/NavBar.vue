@@ -110,7 +110,12 @@ export default {
     methods: {
         logout() {
             localStorage.removeItem('token')
-            this.$router.push('/login')
+            let interval = setInterval(() => {
+                if (!localStorage.getItem('token')) {
+                    clearInterval(interval)
+                    this.$router.push({ name: 'Login'})
+                }
+            }, 100)
         }
     }
 }

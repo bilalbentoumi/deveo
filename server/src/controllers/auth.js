@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
+const transporter = require('../util/mailer')
 
 module.exports = {
 
@@ -55,7 +56,23 @@ module.exports = {
             firstName: req.body.firstName,
             lastName: req.body.lastName
         }).then(user => {
-            res.status(200).json({ status: 'success', message: 'Successfully registered!', user: user })
+
+            transporter.sendMail({
+                from: 'Devep App <deveo.mailer@gmail.com>',
+                to: req.body.email,
+                subject: 'Complete Registration',
+                text: 'Hi there. to complete your registration follow the link bellow:'
+            }, function(err, info) {
+                if (err) {
+                    throw err;
+                } else {
+                    console.log('Email successfully sent!');
+                }
+
+                res.status(200).json({ status: 'success', message: 'Successfully registered!', user: user })
+
+            })
+
         }).catch(err => {
             res.status(301).json({ status: 'error', message: 'Registration failed.' })
         })

@@ -11,9 +11,9 @@ module.exports = (app) => {
     })
 
     /* Auth Routes */
-    router.post('/auth/verify', AuthController.verify)
     router.post('/auth/login', AuthController.login)
     router.post('/auth/register', AuthController.register)
+    router.post('/auth/verify', AuthController.verify)
 
     app.use('/', express.static(path.join(path.dirname(require.main.filename), 'www')))
 

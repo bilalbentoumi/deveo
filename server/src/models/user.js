@@ -8,7 +8,13 @@ const userSchema = new Schema({
     },
     password: String,
     firstName: String,
-    lastName: String
+    lastName: String,
+    active: {
+        type: Boolean,
+        default: false
+    }
+}, {
+    timestamps: true
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)

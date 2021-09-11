@@ -1,20 +1,10 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
-const transporter = require('../util/mailer')
+const {sendVerificationMail} = require('../util/mail-verification')
+const UserVerificationEmail = require('../models/user-verification-email')
 
 module.exports = {
-
-    verify(req, res) {
-
-        jwt.verify(req.body.token, process.env.JWT_SECRET_KEY, (err, user) => {
-            if (err) {
-                res.status(403).json({ valid: false })
-            }
-            res.status(200).json({ valid: true })
-        })
-
-    },
 
     login(req, res) {
 
@@ -56,25 +46,41 @@ module.exports = {
             firstName: req.body.firstName,
             lastName: req.body.lastName
         }).then(user => {
-
-            transporter.sendMail({
-                from: 'Devep App <deveo.mailer@gmail.com>',
-                to: req.body.email,
-                subject: 'Complete Registration',
-                text: 'Hi there. to complete your registration follow the link bellow:'
-            }, function(err, info) {
-                if (err) {
-                    throw err;
-                } else {
-                    console.log('Email successfully sent!');
-                }
-
-                res.status(200).json({ status: 'success', message: 'Successfully registered!', user: user })
-
-            })
+            sendVerificationMail(req, user)
+            res.status(200).json({ status: 'success', message: 'Successfully registered.', user: user })
 
         }).catch(err => {
             res.status(301).json({ status: 'error', message: 'Registration failed.' })
+        })
+
+    },
+
+    verify(req, res) {
+
+        if (!req.body.hash) {
+            return res.status(403).send('Verification hash is required.')
+        }
+
+        UserVerificationEmail.findOne({ hash: req.body.hash }).populate('user').exec((err, result) => {
+
+            if (!result) {
+                return res.status(404).send('Verification hash is incorrect.')
+            }
+
+            User.findOne({ _id: result.user.id }).then(user => {
+
+                if (!user) {
+                    res.status(404).send({ status: 'error', message: 'User not found failed.' })
+                }
+
+                user.active = true
+                user.save().then(() => {
+                    result.delete()
+                    res.send({ status: 'success', message: 'User verified successfully.' })
+                })
+
+            })
+
         })
 
     }

@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploying to Heroku
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install packages
+        run: npm install --prefix ./client
+
+      - name: Build vue
+        run: npm run build --prefix ./client
+
+      - name: Move dist folder to express public folder
+        run: mv ./client/dist ./server/www
+
+      - name: Move server files to root directory
+        run: mv ./server/* ./
+
+      - name: Remove unwanted files and dirs
+        run: rm -R client server
+
+      - name: Create profile
+        run: |
+            echo "web: node index.js" > Procfile
+
+      - name: Deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP }}
+          heroku_email: "bilalbentoumi@gmail.com"

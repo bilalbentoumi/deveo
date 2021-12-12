@@ -9,7 +9,7 @@ if (fs.existsSync('.env')) {
 
 const routes = require('./src/routes')
 const dbConnect = require('./src/database/connect')
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 8000
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

@@ -16,6 +16,10 @@ export default {
     outline: none;
 }
 
+* {
+    font-family: 'Inter';
+}
+
 html, body {
     height: 100%;
 }

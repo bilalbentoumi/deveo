@@ -2,7 +2,7 @@
 
     <NavBar/>
 
-    <div class="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8 pt-24 md:pt-18 pb-12">
+    <div class="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-12">
 
         <div class="grid grid-cols-12 gap-4">
 

@@ -3,11 +3,11 @@
     <div class="post-card bg-white shadow rounded-md overflow-hidden ring ring-transparent hover:ring-indigo-500 duration-75" v-bind="$attrs">
 
         <div class="post-header">
-            <ContentLoader class="w-full h-64" v-if="isLoading" />
-            <img class="object-cover w-full" :src="image" :alt="title" style="max-height: 260px;" v-show="!isLoading" />
+            <ContentLoader class="w-full h-40 sm:h-52 lg:h-64" v-if="isLoading" />
+            <img class="object-cover w-full h-40 sm:h-52 lg:h-64" :src="image" :alt="title" v-show="!isLoading" />
         </div>
 
-        <div class="p-4 md:p-8">
+        <div class="p-4 sm:p-8">
 
             <div class="flex justify-between items-start mb-4 md:pb-4">
 
@@ -17,16 +17,16 @@
                     <img v-else class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Bilal Bentoumi"/>
 
                     <div class="flex flex-col">
-                        <ContentLoader class="mb-2 w-40 h-4 rounded-full" v-if="isLoading" />
+                        <ContentLoader class="mb-2 w-36 h-4 rounded-full" v-if="isLoading" />
                         <span class="text-md font-medium text-gray-800" v-else>Bilal Bentoumi</span>
 
-                        <ContentLoader class="w-28 h-4 rounded-full" v-if="isLoading" />
+                        <ContentLoader class="w-24 h-4 rounded-full" v-if="isLoading" />
                         <span class="published text-sm text-gray-500" v-else>15 min ago</span>
                     </div>
 
                 </div>
 
-                <ContentLoader class="mb-2 w-24 h-7 rounded-full" v-if="isLoading" />
+                <ContentLoader class="mb-2 w-28 h-7 rounded-full" v-if="isLoading" />
                 <span class="read-time text-sm text-gray-500 bg-gray-100 px-4 py-1 rounded-full" v-else>7 min read</span>
 
             </div>

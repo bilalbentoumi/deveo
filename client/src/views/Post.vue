@@ -6,8 +6,9 @@
 
         <div class="grid grid-cols-12 gap-4">
 
-            <div class="post col-span-full xl:col-span-9 flex flex-col gap-10">
-                <div class="post-card bg-white shadow rounded-md overflow-hidden duration-75">
+            <div class="post col-span-full xl:col-span-9 space-y-4">
+
+                <div class="post-panel bg-white shadow rounded-md overflow-hidden">
 
                     <div class="post-header">
                         <ContentLoader class="w-full h-40 sm:h-52 lg:h-96" v-if="isLoading" />
@@ -55,6 +56,40 @@
                     </div>
 
                 </div>
+
+                <div class="read-next bg-white shadow rounded-md overflow-hidden">
+
+                    <div class="panel-header px-4 sm:px-8 pt-6">
+                        <h2 class="text-2xl font-semibold text-gray-800">Read next</h2>
+                    </div>
+
+                    <div class="post-body px-4 sm:px-8 py-4">
+
+                        <ul class="divide-y divide-gray-100">
+                            <li v-for="(post, index) in post.author.posts" :key="index">
+                                <div class="flex justify-between items-start py-4">
+
+                                    <div class="flex items-center gap-3">
+
+                                        <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Bilal Bentoumi"/>
+
+                                        <div class="flex flex-col">
+                                            <a href="" class="text-lg font-medium text-gray-600 hover:text-gray-800 duration-75">{{ post.title }}</a>
+                                            <span class="published text-sm text-gray-500">
+                                                <a href="" class="font-medium text-gray-500 hover:text-indigo-700 duration-75">Bilal Bentoumi</a> - 15 min ago
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="hidden lg:block lg:col-span-3 h-max sticky top-20 space-y-4">
@@ -144,7 +179,7 @@ export default {
                     posts: [
                         { title: 'How to setup storybook in VueJS' },
                         { title: 'How to create react app with create-react-app' },
-                        { title: 'Learn JavaScript in 2 hours!' }
+                        { title: 'Learn JavaScript in 2 hours!' },
                     ]
                 }
             }

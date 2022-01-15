@@ -40,6 +40,8 @@
 
     </div>
 
+    <Footer/>
+
 </template>
 
 <script>
@@ -48,6 +50,7 @@ import QuickLinks from '@/components/sidebar/QuickLinks.vue'
 import PostCard from '@/components/PostCard.vue'
 import ContentLoader from '@/components/ContentLoader.vue'
 import Button from '@/components/Button.vue'
+import Footer from '@/components/Footer.vue'
 
 import react from '@/assets/img/posters/react.png'
 import vue from '@/assets/img/posters/vue.png'
@@ -61,7 +64,8 @@ export default {
         QuickLinks,
         PostCard,
         ContentLoader,
-        Button
+        Button,
+        Footer
     },
     data() {
         return {

@@ -103,6 +103,8 @@
 
     </div>
 
+    <Footer/>
+
 </template>
 
 <script>
@@ -111,6 +113,7 @@ import QuickLinks from '@/components/sidebar/QuickLinks.vue'
 import PostCard from '@/components/PostCard.vue'
 import ContentLoader from '@/components/ContentLoader.vue'
 import Button from '@/components/Button.vue'
+import Footer from '@/components/Footer.vue'
 
 import cover from '@/assets/img/cover.jpeg'
 import picture from '@/assets/img/picture.jpeg'
@@ -124,7 +127,8 @@ export default {
         QuickLinks,
         PostCard,
         ContentLoader,
-        Button
+        Button,
+        Footer
     },
     data() {
         return {

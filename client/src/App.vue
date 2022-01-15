@@ -11,6 +11,7 @@ export default {
 <style>
 @import 'assets/fonts/Inter/inter.css';
 @import 'assets/fonts/font-awesome-pro/css/all.css';
+@import 'assets/css/style.css';
 
 *:focus {
     outline: none;

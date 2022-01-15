@@ -4,7 +4,9 @@
 
         <div class="post-header">
             <ContentLoader class="w-full h-40 sm:h-52 lg:h-64" v-if="isLoading" />
-            <img class="object-cover w-full h-40 sm:h-52 lg:h-64" :src="image" :alt="title" v-show="!isLoading" />
+            <router-link :to="link" v-show="!isLoading">
+                <img class="object-cover w-full h-40 sm:h-52 lg:h-64" :src="image" :alt="title" />
+            </router-link>
         </div>
 
         <div class="p-4 sm:p-8">
@@ -32,7 +34,9 @@
             </div>
 
             <ContentLoader class="mb-10 w-8/12 h-7 rounded-full" v-if="isLoading" />
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4 md:mb-6" v-else>{{ title }}</h3>
+            <router-link :to="link" v-else>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 md:mb-6">{{ title }}</h3>
+            </router-link>
 
             <div v-if="isLoading">
                 <ContentLoader class="mb-2 w-11/12 h-5 rounded-full" />
@@ -49,7 +53,7 @@
 
 <script>
 import ContentLoader from '@/components/ContentLoader.vue'
-import logo from '@/assets/logo.svg'
+
 export default {
     name: 'PostCard',
     components: {
@@ -59,13 +63,14 @@ export default {
         return {
             isLoading: true,
             title: 'Frontend Developer Resources 2022',
-            image: logo,
-            description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).'
+            description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
+            link: ''
         }
     },
     mounted() {
         this.title = this.$attrs.data.title
         this.image = this.$attrs.data.image
+        this.link = this.$attrs.data.link
         setTimeout(() => {
             this.isLoading = false
         }, 2000)

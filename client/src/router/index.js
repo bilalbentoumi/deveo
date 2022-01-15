@@ -7,6 +7,11 @@ const routes = [
         component: () => import('../views/Home.vue')
     },
     {
+        path: '/post',
+        name: 'Post',
+        component: () => import('../views/Post.vue')
+    },
+    {
         path: '/login',
         name: 'Login',
         component: () => import('../views/Login.vue')
@@ -15,7 +20,10 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    scrollBehavior () {
+        return { top: 0 }
+    }
 })
 
 export default router

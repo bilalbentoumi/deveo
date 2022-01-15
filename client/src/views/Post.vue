@@ -96,7 +96,7 @@
 
                 <div class="bg-white shadow rounded-md overflow-hidden">
                     <div class="widget-header">
-                        <img class="w-full h-14 object-cover" :src="post.author.cover" alt="Bilal Bentoumi's cover"/>
+                        <img class="w-full h-20 object-cover" :src="post.author.cover" alt="Bilal Bentoumi's cover"/>
                         <div class="flex items-center gap-2 px-6 -mt-4">
                             <img :src="post.author.picture" class="w-14 h-14 object-cover rounded-full border-4 border-white" alt="Bilal Bentoumi"/>
                             <h3 class="text-xl font-semibold text-gray-700 mt-4">Bilal Bentoumi</h3>

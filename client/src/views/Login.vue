@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2 bg-yellow-500 bg-opacity-20 px-4 py-3 rounded-md mb-6" v-show="invalid">
+                    <div class="flex items-center gap-2 bg-yellow-500 bg-opacity-20 px-4 py-3 rounded-md mb-6" v-if="invalid">
                         <i class="bg-yellow-600 bg-opacity-30 text-yellow-900 text-sm rounded-full w-8 h-8 fas fa-exclamation-triangle inline-flex justify-center items-center"></i>
                         <span class="text-sm font-medium text-yellow-900">Credentials incorrect</span>
                     </div>
@@ -100,12 +100,6 @@ export default {
     },
     data() {
         return {
-            navigation: [
-                { name: 'Dashboard', href: '#', current: true },
-                { name: 'Team', href: '#', current: false },
-                { name: 'Projects', href: '#', current: false },
-                { name: 'Calendar', href: '#', current: false },
-            ],
             form: {
                 email: '',
                 password: '',

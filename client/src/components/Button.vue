@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style scoped>
+
 button {
     @apply inline-flex items-center justify-center;
     @apply px-5 py-1.5;
@@ -20,9 +21,17 @@ button {
     @apply focus:outline-none;
     @apply transition duration-150 ease-in-out;
 }
+
 button[outline] {
     @apply text-indigo-700 hover:text-indigo-500;
     @apply bg-transparent;
     @apply border-indigo-700 hover:border-indigo-500;
 }
+
+button[secondary] {
+    @apply text-indigo-700 hover:text-indigo-500;
+    @apply bg-transparent hover:bg-indigo-50;
+    @apply border-transparent;
+}
+
 </style>

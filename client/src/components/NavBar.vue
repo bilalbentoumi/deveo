@@ -34,7 +34,7 @@
             <div class="col-span-8 md:col-span-4 lg:col-span-4 xl:col-span-3">
                 <div class="buttons flex gap-2 justify-end">
                     <router-link to="/login">
-                        <Button outline>Login</Button>
+                        <Button secondary>Login</Button>
                     </router-link>
                     <Button>Create Account</Button>
                 </div>

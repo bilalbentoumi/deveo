@@ -16,13 +16,12 @@ module.exports = {
             }).then(() => {
 
                 transporter.sendMail({
-                    from: 'Devep App <deveo.mailer@gmail.com>',
                     to: user.email,
                     subject: 'Complete Registration',
                     html: `
-                    <p>Hi ${user.firstName + ' ' + user.lastName}. to complete your registration follow the link bellow:</p>
-                    <a href="${'http://' + req.headers.host}/api/auth/verify-email/${hash}">Click here to activate your account</a>
-                `
+                        <p>Hi ${user.firstName + ' ' + user.lastName}. to complete your registration follow the link bellow:</p>
+                        <a href="${'http://' + req.headers.host}/api/auth/verify-email/${hash}">Click here to activate your account</a>
+                    `
                 }, function(err) {
                     if (err) {
                         throw err

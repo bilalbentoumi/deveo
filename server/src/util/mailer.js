@@ -8,4 +8,6 @@ module.exports = nodemailer.createTransport({
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS
     }
+}, {
+    from: 'Deveo <deveo.mailer@gmail.com>'
 })

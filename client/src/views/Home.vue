@@ -90,9 +90,3 @@ export default {
     }
 }
 </script>
-
-<style>
-body {
-    background: #f8f8f8;
-}
-</style>

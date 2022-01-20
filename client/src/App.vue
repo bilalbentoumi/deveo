@@ -25,6 +25,10 @@ html, body {
     height: 100%;
 }
 
+body {
+    background: #f8f8f8;
+}
+
 #app {
     height: 100%;
 }

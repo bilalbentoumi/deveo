@@ -36,7 +36,9 @@
                     <router-link to="/login">
                         <Button secondary>Login</Button>
                     </router-link>
-                    <Button>Create Account</Button>
+                    <router-link to="/register">
+                        <Button>Create Account</Button>
+                    </router-link>
                 </div>
             </div>
 

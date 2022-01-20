@@ -20,7 +20,7 @@ module.exports = {
                     subject: 'Complete Registration',
                     html: `
                         <p>Hi ${user.firstName + ' ' + user.lastName}. to complete your registration follow the link bellow:</p>
-                        <a href="${'http://' + req.headers.host}/api/auth/verify-email/${hash}">Click here to activate your account</a>
+                        <a href="${'https://' + req.headers.host}/verify-email/${hash}">Click here to activate your account</a>
                     `
                 }, function(err) {
                     if (err) {

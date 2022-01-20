@@ -67,18 +67,17 @@ module.exports = {
                 return res.status(404).send('Verification hash is incorrect.')
             }
 
-            User.findOne({ _id: result.user.id }).then(user => {
+            let user = result.user
 
-                if (!user) {
-                    res.status(404).send({ status: 'error', message: 'User not found failed.' })
-                }
+            if (!user) {
+                return res.status(404).send('User not found.')
+            }
 
-                user.active = true
-                user.save().then(() => {
-                    result.delete()
-                    res.send({ status: 'success', message: 'User verified successfully.' })
-                })
+            user.active = true
 
+            user.save().then(() => {
+                result.delete()
+                res.send({ status: 'success', message: 'Account verified successfully.' })
             })
 
         })

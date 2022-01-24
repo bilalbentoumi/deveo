@@ -1,5 +1,5 @@
-const express = require("express")
-const AuthController = require('../controllers/auth')
+const express = require('express')
+const AuthController = require('../controllers/auth.controller')
 const path = require('path')
 
 module.exports = (app) => {
@@ -14,6 +14,7 @@ module.exports = (app) => {
     router.post('/auth/login', AuthController.login)
     router.post('/auth/register', AuthController.register)
     router.post('/auth/verify', AuthController.verify)
+    router.post('/auth/verify-token', AuthController.verifyToken)
 
     app.use('/', express.static(path.join(path.dirname(require.main.filename), 'www')))
 

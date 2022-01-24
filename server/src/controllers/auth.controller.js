@@ -82,6 +82,21 @@ module.exports = {
 
         })
 
-    }
+    },
+
+    verifyToken(req, res) {
+
+        if (!req.body.token) {
+            return res.status(403).send('Token is required.')
+        }
+
+        try {
+            let result = jwt.verify(req.body.token, process.env.JWT_SECRET_KEY)
+            res.status(200).json({ valid: true, data: result })
+        } catch (err) {
+            res.status(401).json({ valid: false, message: err.message })
+        }
+
+    },
 
 }

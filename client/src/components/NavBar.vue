@@ -1,6 +1,6 @@
 <template>
 
-    <div class="bg-white bg-opacity-90 backdrop-blur-3xl border-b fixed left-0 right-0 h-16 flex items-center border-b border-gray-900/10 dark:border-gray-50/[0.06] z-10">
+    <div class="bg-white bg-opacity-90 backdrop-blur-2xl border-b fixed left-0 right-0 h-16 flex items-center border-b border-gray-900/10 dark:border-gray-50/[0.06] z-10">
 
         <div class="deveo-container mx-auto w-full grid grid-cols-12 gap-4 items-center">
 
@@ -33,12 +33,14 @@
 
             <div class="col-span-8 md:col-span-4 lg:col-span-4 xl:col-span-3">
                 <div class="buttons flex gap-2 justify-end">
-                    <router-link to="/login">
+                    <router-link to="/login" v-if="!authenticated">
                         <Button secondary>Login</Button>
                     </router-link>
-                    <router-link to="/register">
+                    <router-link to="/register" v-if="!authenticated">
                         <Button>Create Account</Button>
+
                     </router-link>
+                    <Button @click="logout()" v-if="authenticated">Logout</Button>
                 </div>
             </div>
 
@@ -50,10 +52,17 @@
 
 <script>
 import Button from '@/components/Button.vue'
+import {Auth} from '../util/auth'
+
 export default {
     name: 'NavBar',
     components: {
         Button
+    },
+    computed: {
+        authenticated() {
+            return !!this.$store.state.token
+        }
     },
     data() {
         return {}
@@ -61,6 +70,9 @@ export default {
     methods: {
         toggleDarkMode() {
             document.querySelector('html').classList.toggle('dark')
+        },
+        logout() {
+            Auth.logout()
         }
     }
 }

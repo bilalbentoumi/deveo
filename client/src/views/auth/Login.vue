@@ -92,6 +92,7 @@
 <script>
 import axios from 'axios'
 import NavBar from '@/components/NavBar.vue'
+import store from '../../store'
 
 export default {
     name: 'Login',
@@ -110,16 +111,31 @@ export default {
     },
     methods: {
         handleSubmit() {
-            if (this.form.email && this.form.password) {
-                this.loading = true
-                axios.post('/api/auth/login', this.form).then(res => {
-                    localStorage.setItem('token', res.data.token)
-                    this.$router.push({ name: 'Home' })
-                }).catch(() => {
-                    this.loading = false
-                    this.showAlert()
-                })
+
+            if (!this.form.email || !this.form.password) {
+                return
             }
+
+            this.loading = true
+
+            axios.post('/api/auth/login', this.form).then(res => {
+
+                localStorage.setItem('token', res.data.token)
+
+                this.$store.dispatch('setToken', res.data.token)
+
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.token
+
+                this.$router.push({ name: 'Home' })
+
+            }).catch(() => {
+
+                this.$store.dispatch('setToken', null)
+
+                this.loading = false
+                this.showAlert()
+            })
+
         },
         showAlert() {
             if (!this.invalid) {

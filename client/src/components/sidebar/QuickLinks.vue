@@ -1,11 +1,6 @@
 <template>
 
-    <div class="flex items-center gap-4 mb-4" v-for="i in 6" :key="i" v-if="isLoading">
-        <ContentLoader class="w-6 h-6 rounded-md"/>
-        <ContentLoader class="w-36 rounded-md"/>
-    </div>
-
-    <ul v-else>
+    <ul>
         <li class="mb-4">
             <a href="" class="flex items-center lg:text-sm lg:leading-6 font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
                 <div class="mr-4 rounded-md ring-1 ring-gray-900/5 shadow-sm group-hover:shadow group-hover:ring-gray-900/10 dark:ring-0 dark:shadow-none dark:group-hover:shadow-none dark:group-hover:highlight-white/10 group-hover:shadow-indigo-200 dark:group-hover:bg-indigo-500 dark:bg-gray-800 dark:highlight-white/5">
@@ -66,14 +61,8 @@ export default {
         ContentLoader
     },
     data() {
-        return {
-            isLoading: true
-        }
+        return {}
     },
-    mounted() {
-        setTimeout(() => {
-            this.isLoading = false
-        }, 2000)
-    }
+    mounted() {}
 }
 </script>

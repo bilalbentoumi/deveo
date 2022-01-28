@@ -11,7 +11,14 @@
             </div>
 
             <div class="posts col-span-full lg:col-span-9 xl:col-span-7 flex flex-col gap-10">
-                <PostCard v-for="(post, index) in posts" :key="index" :data="post" />
+                <Suspense>
+                    <template #default>
+                        <Posts/>
+                    </template>
+                    <template #fallback>
+                        <PostCardLoader v-for="i in 5"/>
+                    </template>
+                </Suspense>
             </div>
 
             <div class="hidden xl:block xl:col-span-3">
@@ -45,48 +52,23 @@
 </template>
 
 <script>
+
 import NavBar from '@/components/NavBar.vue'
 import QuickLinks from '@/components/sidebar/QuickLinks.vue'
-import PostCard from '@/components/PostCard.vue'
-import ContentLoader from '@/components/ContentLoader.vue'
 import Button from '@/components/Button.vue'
 import Footer from '@/components/Footer.vue'
-
-import react from '@/assets/img/posters/react.png'
-import vue from '@/assets/img/posters/vue.png'
-import js from '@/assets/img/posters/js.jpg'
-import kinesis from '@/assets/img/posters/kinesis.png'
+import PostCardLoader from '@/components/post/PostCardLoader.vue'
+import {defineAsyncComponent} from 'vue'
 
 export default {
     name: 'Home',
     components: {
         NavBar,
         QuickLinks,
-        PostCard,
-        ContentLoader,
+        Posts: defineAsyncComponent(() => import('@/components/Posts.vue')),
+        PostCardLoader,
         Button,
         Footer
-    },
-    data() {
-        return {
-            sidebar: [
-                { icon: 'home', label: 'Home' },
-                { icon: 'video', label: 'Videos' },
-                { icon: 'file', label: 'Drafts' },
-                { icon: 'clock', label: 'Scheduled' },
-                { icon: 'bookmark', label: 'Bookmarks' },
-                { icon: 'trash', label: 'Trash' }
-            ],
-            posts: [
-                { title: 'How to setup storybook in VueJS', image: vue, link: 'post' },
-                { title: 'How to create react app with create-react-app', image: react, link: 'post' },
-                { title: 'Learn JavaScript in 2 hours!', image: js, link: 'post' },
-                { title: 'Introduction to Amazon Kinesis', image: kinesis, link: 'post' },
-            ]
-        }
-    },
-    mounted() {
-        document.title = 'Deveo'
     }
 }
 </script>

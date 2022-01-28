@@ -145,7 +145,6 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import QuickLinks from '@/components/sidebar/QuickLinks.vue'
-import PostCard from '@/components/PostCard.vue'
 import ContentLoader from '@/components/ContentLoader.vue'
 import Button from '@/components/Button.vue'
 import Footer from '@/components/Footer.vue'
@@ -153,14 +152,11 @@ import Footer from '@/components/Footer.vue'
 import cover from '@/assets/img/cover.jpeg'
 import picture from '@/assets/img/picture.jpeg'
 
-import kinesis from '@/assets/img/posters/kinesis.png'
-
 export default {
     name: 'Post',
     components: {
         NavBar,
         QuickLinks,
-        PostCard,
         ContentLoader,
         Button,
         Footer
@@ -170,7 +166,7 @@ export default {
             isLoading: false,
             post: {
                 title: 'Introduction to Amazon Kinesis',
-                image: kinesis,
+                image: '/posters/kinesis.png',
                 content: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
                 author: {
                     name: 'Bilal Bentoumi',

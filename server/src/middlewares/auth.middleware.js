@@ -14,7 +14,7 @@ exports.authenticated = (req, res, next) => {
             return res.status(401).json({ success: false, message: 'Invalid request.' })
         }
 
-        req.jwt = jwt.verify(authorization[1], process.env.JWT_SECRET_KEY)
+        req.userId = jwt.verify(authorization[1], process.env.JWT_SECRET_KEY).id
 
         return next()
 

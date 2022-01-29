@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
-const {sendVerificationMail} = require('../util/mail-verification')
+const { sendVerificationMail } = require('../util/mail-verification')
 const UserVerificationEmail = require('../models/user-verification-email')
 
 module.exports = {

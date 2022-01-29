@@ -4,11 +4,21 @@ const { Schema } = mongoose
 const userSchema = new Schema({
     email: {
         type: String,
-        index: { unique: true }
+        index: { unique: true },
+        required: true
     },
-    password: String,
-    firstName: String,
-    lastName: String,
+    password: {
+        type: String,
+        required: true
+    },
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
     active: {
         type: Boolean,
         default: false

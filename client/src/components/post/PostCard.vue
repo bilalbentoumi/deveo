@@ -14,8 +14,10 @@
                 <div class="author flex items-center gap-3">
                     <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Bilal Bentoumi"/>
                     <div class="flex flex-col">
-                        <span class="text-md font-medium text-gray-800">Bilal Bentoumi</span>
-                        <span class="published text-sm text-gray-500">15 min ago</span>
+                        <span class="text-md font-medium text-gray-800">{{ post.authorName }}</span>
+                        <time class="published text-sm text-gray-500" :datetime="post.published">
+                            {{ timeAgo(post.published) }}
+                        </time>
                     </div>
                 </div>
                 <span class="read-time text-sm text-gray-500 bg-gray-100 px-4 py-1 rounded-full">7 min read</span>
@@ -34,6 +36,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
     name: 'PostCard',
 
@@ -44,12 +48,18 @@ export default {
     setup(props) {
 
         props.post.slug = '/blog/' + props.post.slug
+        props.post.published = props.post.createdAt
+        props.post.authorName = props.post.user.firstName + ' ' + props.post.user.lastName
 
         function formatDescription(description) {
             return description.slice(0, 220) + '...'
         }
 
-        return { formatDescription }
+        function timeAgo(datetime) {
+            return moment(datetime).fromNow()
+        }
+
+        return { formatDescription, timeAgo }
     }
 
 }

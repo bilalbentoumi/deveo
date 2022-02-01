@@ -9,6 +9,7 @@ const userSchema = new Schema({
         required: true
     }
 }, {
+    collection: 'user_verification_emails',
     timestamps: true
 })
 

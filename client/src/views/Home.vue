@@ -13,7 +13,7 @@
             <div class="posts col-span-full lg:col-span-9 xl:col-span-7 flex flex-col gap-10">
                 <Suspense>
                     <template #default>
-                        <Posts/>
+                        <PostList/>
                     </template>
                     <template #fallback>
                         <PostCardLoader v-for="i in 5"/>
@@ -58,17 +58,23 @@ import QuickLinks from '@/components/sidebar/QuickLinks.vue'
 import Button from '@/components/Button.vue'
 import Footer from '@/components/Footer.vue'
 import PostCardLoader from '@/components/post/PostCardLoader.vue'
-import {defineAsyncComponent} from 'vue'
+import { defineAsyncComponent } from 'vue'
 
 export default {
     name: 'Home',
+
     components: {
         NavBar,
         QuickLinks,
-        Posts: defineAsyncComponent(() => import('@/components/Posts.vue')),
+        PostList: defineAsyncComponent(() => import('@/components/PostList.vue')),
         PostCardLoader,
         Button,
         Footer
+    },
+
+    setup() {
+        document.title = 'Deveo'
     }
+
 }
 </script>

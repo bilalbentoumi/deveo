@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 
-import {defineAsyncComponent, ref} from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 
 import PostCardLoader from '@/components/post/PostCardLoader.vue'
 
@@ -18,7 +18,7 @@ const AsyncPostCard = defineAsyncComponent({
 })
 
 export default {
-    name: 'Posts',
+    name: 'PostList',
 
     components: {
         AsyncPostCard

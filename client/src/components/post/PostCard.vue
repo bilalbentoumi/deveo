@@ -3,8 +3,8 @@
     <div class="post-card bg-white shadow rounded-md overflow-hidden ring ring-transparent hover:ring-indigo-500 duration-75" v-bind="$attrs">
 
         <div class="post-header">
-            <router-link :to="post.link">
-                <img class="object-cover w-full h-40 sm:h-52 lg:h-64" :src="post.image" :alt="post.title" />
+            <router-link :to="post.slug">
+                <img class="object-cover w-full h-40 sm:h-52 lg:h-64" :src="post.poster" :alt="post.title" />
             </router-link>
         </div>
 
@@ -21,11 +21,11 @@
                 <span class="read-time text-sm text-gray-500 bg-gray-100 px-4 py-1 rounded-full">7 min read</span>
             </div>
 
-            <router-link :to="post.link">
+            <router-link :to="post.slug">
                 <h3 class="text-2xl font-semibold text-gray-800 mb-4 md:mb-6">{{ post.title }}</h3>
             </router-link>
 
-            <p class="text-gray-500 font-light">{{ formatDescription(post.description) }}</p>
+            <p class="text-gray-500 font-light">{{ formatDescription(post.content) }}</p>
 
         </div>
 
@@ -41,7 +41,9 @@ export default {
         post: Object
     },
 
-    setup() {
+    setup(props) {
+
+        props.post.slug = '/blog/' + props.post.slug
 
         function formatDescription(description) {
             return description.slice(0, 220) + '...'

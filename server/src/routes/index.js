@@ -19,7 +19,9 @@ module.exports = (app) => {
     router.post('/auth/verify-token', AuthController.verifyToken)
 
     /* Post Routes */
-    router.get('/posts', authenticated, PostController.all)
+    router.get('/posts', PostController.all)
+    router.get('/posts/:slug', PostController.oneBySlug)
+    router.post('/posts', authenticated, PostController.create)
 
     app.use('/', express.static(path.join(path.dirname(require.main.filename), 'www')))
 

@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import auth from '../middleware/auth'
 import guest from '../middleware/guest'
 
@@ -32,6 +32,11 @@ const routes = [
         name: 'VerifyEmail',
         beforeEnter: guest,
         component: () => import('../views/auth/Verify.vue')
+    },
+    {
+        path: '/:catchAll',
+        name: 'NotFound',
+        component: () => import('../views/NotFound.vue')
     }
 ]
 

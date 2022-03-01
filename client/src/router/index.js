@@ -6,13 +6,11 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        beforeEnter: auth,
         component: () => import('../views/Home.vue')
     },
     {
         path: '/blog/:slug',
         name: 'Post',
-        beforeEnter: auth,
         component: () => import('../views/Post.vue')
     },
     {
